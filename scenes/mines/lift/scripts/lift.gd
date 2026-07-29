@@ -23,12 +23,10 @@ func _on_night_ended() -> void:
 	LoadingManager.load_scene("res://scenes/hub/hub_area.tscn")
 
 func descend_lift() -> void:
-	print("Descending!")
 	target_y = down_pos
 	_setup_lift_cutscene()
 	
 func ascend_lift() -> void:
-	print("Ascending!")
 	target_y = up_pos
 	_setup_lift_cutscene()
 	

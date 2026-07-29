@@ -12,7 +12,6 @@ func connect_to_drill(drill: AzureDrill) -> void:
 		return
 	
 	drill.drill_ticked.connect(_on_drill_ticked)
-	print("Azure node registered!")
 	
 
 func _on_drill_ticked() -> void:

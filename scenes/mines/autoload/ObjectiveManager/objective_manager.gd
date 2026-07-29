@@ -10,9 +10,13 @@ var current_objectives : Array[Objective]
 
 func _ready() -> void:
 	NightManager.night_started.connect(_on_night_started)
+	NightManager.night_ended.connect(_on_night_ended)
 
 func _on_night_started() -> void:
 	load_objectives(1) # Later, check the save data to see what night we are on.
+
+func _on_night_ended() -> void:
+	current_objectives.clear()
 
 func load_objectives(shift: int) -> void:
 	var target_path = objectives_folder + str(shift)
@@ -30,7 +34,8 @@ func load_objectives(shift: int) -> void:
 func create_objective(objective: Objective) -> void:
 	objective.objective_condition.setup_objective()
 	objective_created.emit(objective)
-	objective.objective_condition.objective_fulfilled.connect(_on_objective_fulfilled.bind(objective))
+	if not objective.objective_condition.objective_fulfilled.is_connected(_on_objective_fulfilled):
+		objective.objective_condition.objective_fulfilled.connect(_on_objective_fulfilled.bind(objective))
 	current_objectives.append(objective)
 
 func _on_objective_fulfilled(objective: Objective) -> void:

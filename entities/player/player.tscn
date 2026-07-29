@@ -1799,6 +1799,7 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="DevLight" type="OmniLight3D" parent="." unique_id=1695768188]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4557211, 0)
+visible = false
 light_energy = 5.0
 light_size = 0.65
 omni_range = 38.622
