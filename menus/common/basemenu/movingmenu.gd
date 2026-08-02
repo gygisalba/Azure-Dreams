@@ -1,7 +1,7 @@
 extends Control
 class_name MovingMenu
 
-@export_category("Animation")
+@export_category("Animation Tweening")
 @export var tween_duration := 1.5
 @export var tween_speed := 1.0
 @export var start_pos_offset := Vector2(0, -1000)

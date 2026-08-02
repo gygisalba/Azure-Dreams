@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://den3vfe5sf5rc" path="res://ui/scripts/fade_rect.gd" id="1_0a3mo"]
 
 [node name="FadeRect" type="ColorRect" unique_id=231394271]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
