@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://fr7avfnn5mix" path="res://entities/player/scripts/death_component/death_component.gd" id="11_afbqv"]
 [ext_resource type="Script" uid="uid://c7j0miur5c51t" path="res://entities/player/scripts/player_state/player_state_component.gd" id="13_yqrof"]
 [ext_resource type="Script" uid="uid://due7ny73cwbfr" path="res://entities/player/scripts/hands_component.gd" id="15_b2kln"]
+[ext_resource type="Script" uid="uid://bckm6gm8q6ql5" path="res://entities/player/scripts/interactable_hint_component.gd" id="15_we0b7"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_we0b7"]
 animation = &"sitting_start"
@@ -1758,6 +1759,11 @@ script = ExtResource("13_yqrof")
 [node name="InteractionController" type="Node" parent="Components" unique_id=1480168796]
 unique_name_in_owner = true
 script = ExtResource("7_yqrof")
+
+[node name="InteractableHintComponent" type="Node" parent="Components/InteractionController" unique_id=406444005]
+unique_name_in_owner = true
+script = ExtResource("15_we0b7")
+hint_size = 22
 
 [node name="HandsComponent" type="Node" parent="Components" unique_id=831575301]
 unique_name_in_owner = true
