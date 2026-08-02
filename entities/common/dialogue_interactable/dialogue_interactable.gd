@@ -1,3 +1,4 @@
+@tool
 extends InteractableArea
 class_name DialogueInteractable
 ## An interactable area that shows dialogue when interacted with.

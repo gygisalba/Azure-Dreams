@@ -1760,10 +1760,9 @@ script = ExtResource("13_yqrof")
 unique_name_in_owner = true
 script = ExtResource("7_yqrof")
 
-[node name="InteractableHintComponent" type="Node" parent="Components/InteractionController" unique_id=406444005]
+[node name="InteractableHintController" type="Node" parent="Components/InteractionController" unique_id=406444005]
 unique_name_in_owner = true
 script = ExtResource("15_we0b7")
-hint_size = 22
 
 [node name="HandsComponent" type="Node" parent="Components" unique_id=831575301]
 unique_name_in_owner = true

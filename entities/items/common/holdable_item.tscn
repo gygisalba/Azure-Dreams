@@ -28,6 +28,7 @@ script = ExtResource("2_pvojc")
 metadata/_custom_type_script = "uid://eno5il8vtthn"
 
 [node name="InteractableArea" type="Area3D" parent="HoldableComponent" unique_id=1670853315]
+collision_layer = 32
 script = ExtResource("3_bdqdb")
 metadata/_custom_type_script = "uid://bovtjjderyyp5"
 

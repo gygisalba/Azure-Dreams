@@ -10,6 +10,7 @@ class_name Player
 @onready var player_state_component: PlayerStateComponent = %PlayerStateComponent
 @onready var interaction_controller: InteractionController = %InteractionController
 @onready var hands_component: HandsComponent = %HandsComponent
+@onready var interactable_hint_controller: InteractableHintController = %InteractableHintController
 
 @onready var user_interface_layer: UserInterface = %UserInterfaceLayer
 

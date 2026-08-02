@@ -1,7 +1,7 @@
 extends Node
 class_name InteractionController
 
-@onready var interactable_hint_component := $InteractableHintComponent
+@onready var interactable_hint_controller := $InteractableHintController
 @onready var player_state_component := %PlayerStateComponent
 
 enum InteractedProperties {
@@ -16,14 +16,14 @@ var selected_interactable_index : int
 var interactables_nearby : Dictionary[InteractableArea, Label3D] = {}
 
 func interactable_area_entered(area: InteractableArea) -> void:
-	var new_hint = interactable_hint_component.assign_hint_text(area)
+	var new_hint = interactable_hint_controller.assign_hint_text(area)
 	interactables_nearby[area] = new_hint
 	if interactables_nearby.size() == 1:
-		interactable_hint_component.emphasis_changed(-1, 0)
+		interactable_hint_controller.emphasis_changed(-1, 0)
 
 func interactable_area_exited(area: InteractableArea) -> void:
 	interactables_nearby.erase(area)
-	interactable_hint_component.deassign_hint_text(area)
+	interactable_hint_controller.deassign_hint_text(area)
 
 ## Interacting
 func _input(event: InputEvent) -> void:
@@ -43,7 +43,7 @@ func _handle_scrolling(event: InputEvent) -> void:
 		if next > interactables_nearby.size() - 1:
 			next = 0
 		selected_interactable_index = max(0, next)
-		interactable_hint_component.emphasis_changed(previous, selected_interactable_index)
+		interactable_hint_controller.emphasis_changed(previous, selected_interactable_index)
 
 func _handle_interaction(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):

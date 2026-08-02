@@ -1,27 +1,25 @@
 extends Node
-class_name InteractableHintComponent
+class_name InteractableHintController
 
 @onready var player_state_component: PlayerStateComponent = %PlayerStateComponent
 @onready var interaction_controller := %InteractionController
 
 @export var hint_node_default_name := "HINT_TEXT"
-@export var hint_offset := Vector3(0, 0, 0) # todo: get offset and size from interactable 
-@export_range(1, 200) var hint_size : int = 50
-	
+
 func _process(_delta: float) -> void:
-	for interactable in interaction_controller.interactables_nearby:
+	for interactable : InteractableArea in interaction_controller.interactables_nearby:
 		var hint = interaction_controller.interactables_nearby[interactable]
 		if player_state_component.is_player_state(PlayerStateComponent.PlayerState.BUSY):
 			hint.hide()
 			return
 		
 		hint.show()
-		hint.global_position = ((interactable.global_position + PlayerManager.player.global_position) / 2) + hint_offset
+		hint.global_position = PlayerManager.player.global_position.lerp(interactable.global_position, interactable.hint_distance) + interactable.hint_offset
 
 func assign_hint_text(interactable: InteractableArea) -> Label3D:
 	var new_hint = create_hint_text(interactable)
 	interactable.add_child(new_hint)
-	new_hint.global_position = ((interactable.global_position + PlayerManager.player.global_position) / 2) + hint_offset
+	new_hint.global_position = PlayerManager.player.global_position.lerp(interactable.global_position, interactable.hint_distance) + interactable.hint_offset
 	return new_hint
 	
 func deassign_hint_text(interactable: InteractableArea) -> void:
@@ -31,11 +29,15 @@ func deassign_hint_text(interactable: InteractableArea) -> void:
 func create_hint_text(interactable: InteractableArea) -> Label3D:
 	var new_label = Label3D.new()
 	new_label.name = "HINT_TEXT"
-	new_label.text = get_interaction_key(interactable)
+	new_label.text = get_hint_content(interactable)
 	new_label.billboard = true
 	new_label.no_depth_test = true
-	new_label.font_size = hint_size
+	new_label.font_size = interactable.hint_size
 	return new_label
+
+func update_hint_text(interactable: InteractableArea) -> void:
+	var hint = interactable.get_node("HINT_TEXT") as Label3D
+	hint.text = get_hint_content(interactable)
 
 func emphasis_changed(previous_index: int, current_index: int) -> void:
 	if previous_index != -1:
@@ -54,13 +56,16 @@ func deemphasize_hint_text(interactable: InteractableArea) -> void:
 	var hint = interactable.get_node("HINT_TEXT") as Label3D
 	hint.outline_modulate = Color.BLACK
 
-func get_interaction_key(interactable: InteractableArea) -> String:
+func get_hint_content(interactable: InteractableArea) -> String:
 	var key_label = ""
+	
+	if interactable.interactable_name:
+		key_label += interactable.interactable_name
 	
 	if interactable.can_hold:
 		var left_str := _event_to_display_string(InputMap.action_get_events("left_hand"))
 		var right_str := _event_to_display_string(InputMap.action_get_events("right_hand"))
-		key_label = left_str + "/" + right_str
+		key_label += "\n" + left_str + "/" + right_str
 	
 	if interactable.can_interact:
 		var interact_str := _event_to_display_string(InputMap.action_get_events("interact"))

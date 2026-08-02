@@ -91,7 +91,7 @@ light_indirect_energy = 0.534
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=590886895]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42295837, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014228821, 0.49782562, -0.0073184967)
 mesh = SubResource("PlaneMesh_g4v7s")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1724389204]
@@ -109,6 +109,7 @@ environment = SubResource("Environment_g4v7s")
 
 [node name="WorldTree" type="MeshInstance3D" parent="." unique_id=1230677918]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -2.2739248, 0)
+transparency = 0.2
 mesh = SubResource("ArrayMesh_23y1y")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WorldTree" unique_id=1589385646]
@@ -119,7 +120,8 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_o5qiv")
 
 [node name="DevLight" type="OmniLight3D" parent="WorldTree" unique_id=2145706548]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8244739, 0)
-light_energy = 5.0
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.2989928, 0)
+light_color = Color(2.0756386e-07, 0.14154091, 0.14154091, 1)
+light_energy = 0.0
 light_size = 0.65
 omni_range = 38.622

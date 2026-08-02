@@ -6,6 +6,10 @@ class_name HoldableComponent
 @export var holding_rotation_offset := Vector3.ZERO
 @export var follow_speed := 12.0
 
+@export_category("Hint Wrangling")
+@export var hint_while_held := "Drop"
+var original_hint : String
+
 @onready var interactable_area: InteractableArea = $InteractableArea
 @onready var collider: CollisionShape3D = %CollisionShape3D
 @onready var parent : HoldableItem = self.get_parent()
@@ -18,6 +22,9 @@ var target_rotation : Vector3
 
 func _ready() -> void:
 	interactable_area.interacted.connect(_on_interactable_area_interacted)
+	if interactable_area.interactable_name == "Default Name":
+		interactable_area.interactable_name = "Pickup"
+	original_hint = interactable_area.interactable_name
 
 func _on_interactable_area_interacted(properties: InteractionController.InteractedProperties) -> void:
 	if held:
@@ -25,11 +32,15 @@ func _on_interactable_area_interacted(properties: InteractionController.Interact
 			PlayerManager.player.hands_component.drop_right_hand()
 		elif properties == InteractionController.InteractedProperties.LeftHand:
 			PlayerManager.player.hands_component.drop_left_hand()
+		interactable_area.interactable_name = original_hint
+		PlayerManager.player.interactable_hint_controller.update_hint_text(interactable_area)
 	else:
 		if properties == InteractionController.InteractedProperties.RightHand:
 			PlayerManager.player.hands_component.place_in_right_hand(parent)
 		elif properties == InteractionController.InteractedProperties.LeftHand:
 			PlayerManager.player.hands_component.place_in_left_hand(parent)
+		interactable_area.interactable_name = hint_while_held
+		PlayerManager.player.interactable_hint_controller.update_hint_text(interactable_area)
 
 func pick_up() -> void:
 	collider.disabled = true

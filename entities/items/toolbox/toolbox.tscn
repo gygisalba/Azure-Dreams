@@ -43,6 +43,7 @@ holding_offset = Vector3(0, -0.45, 0)
 holding_rotation_offset = Vector3(0, 1.585, 0)
 
 [node name="InteractableArea" type="Area3D" parent="HoldableComponent" unique_id=1670853315]
+collision_layer = 32
 script = ExtResource("1_fhswa")
 can_hold = true
 metadata/_custom_type_script = "uid://bovtjjderyyp5"
