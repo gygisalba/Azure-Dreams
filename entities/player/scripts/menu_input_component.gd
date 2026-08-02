@@ -6,7 +6,7 @@ var pause_menu : PauseMenu
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("menu"):
-		if not pause_menu: # create and cache scene if not existing
+		if not pause_menu:
 			pause_menu = PAUSE_MENU_SCENE.instantiate()
 			get_tree().current_scene.add_child(pause_menu)
 		

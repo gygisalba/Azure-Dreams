@@ -1,8 +1,11 @@
-extends Control
+extends BaseMenu
 class_name PauseMenu
 
 var paused : bool
 signal pause_state_changed(state: bool)
+
+func _ready() -> void:
+	super()
 
 func _on_resume_button_pressed() -> void:
 	toggle_pause()
@@ -27,6 +30,6 @@ func toggle_pause() -> void:
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			get_tree().paused = false
-			hide()
+			queue_free()
 		
 		emit_signal("pause_state_changed", paused)

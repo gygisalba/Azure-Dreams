@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u0e80uo62pwq"
-path.bptc="res://.godot/imported/ocean_displacement_2.exr-3b64d51ad0e1e850c4a68e390bb3ac9f.bptc.ctex"
+uid="uid://dqc5byfgi4gc5"
+path.bptc="res://.godot/imported/ocean_displacement_1.exr-b719da734718d8007f39183b5fe5e441.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/ocean/ocean_shader/assets/ocean_displacement_2.exr"
-dest_files=["res://.godot/imported/ocean_displacement_2.exr-3b64d51ad0e1e850c4a68e390bb3ac9f.bptc.ctex"]
+source_file="res://scenes/abyss/ocean_shader/assets/ocean_displacement_1.exr"
+dest_files=["res://.godot/imported/ocean_displacement_1.exr-b719da734718d8007f39183b5fe5e441.bptc.ctex"]
 
 [params]
 

@@ -61,7 +61,7 @@ size_flags_horizontal = 4
 theme = ExtResource("1_662h8")
 theme_override_font_sizes/normal_font_size = 84
 bbcode_enabled = true
-text = "[shake][color=#007FFF]azure[/color] dreams"
+text = "[shake][color=#007FFF]title[/color] "
 horizontal_alignment = 1
 vertical_alignment = 1
 
