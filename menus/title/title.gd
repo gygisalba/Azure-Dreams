@@ -1,4 +1,4 @@
-extends Control
+extends BaseMenu
 class_name TitleMenu
 
 func _on_play_button_pressed() -> void:

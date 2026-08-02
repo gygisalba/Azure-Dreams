@@ -1,4 +1,4 @@
-extends Control
+extends BaseMenu
 class_name DeadMenu
 
 var death_messages = []

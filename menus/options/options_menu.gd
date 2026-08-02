@@ -1,4 +1,4 @@
-extends Control
+extends MovingMenu
 class_name options_menu
 
 @onready var master_volume_slider: VSlider = %MasterVolumeSlider
@@ -16,6 +16,7 @@ const SAVE_PATH := "res://userdata/settings/volume_settings.cfg"
 var config := ConfigFile.new()
 
 func _ready() -> void:
+	super()
 	load_volumes()
 
 func _on_master_volume_slider_value_changed(value: float) -> void:

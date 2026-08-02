@@ -1,4 +1,4 @@
-extends BaseMenu
+extends MovingMenu
 class_name PauseMenu
 
 var paused : bool
